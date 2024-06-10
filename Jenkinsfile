@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/srinivas325/tf-state-s3.git'
+                git branch: 'main', url: 'https://github.com/srinivas325/nessdigital.git'
             }
         }
         
