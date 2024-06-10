@@ -53,9 +53,11 @@ pipeline {
         stage('Terraform Plan') {
             agent any
             steps {
-                script {
-                    sh 'terraform plan -no-color -input=false -out=tfplan'
-            }
+
+			script {
+                    def tfvarsFile = "${params.ENVIRONMENT}.tfvars"
+                    sh "terraform plan -no-color -input=false -var-file=${tfvarsFile} -out=tfplan"
+                }
             }
     }
     stage('Approval') {
